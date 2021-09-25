@@ -52,7 +52,7 @@ public class DataHelper {
         return "10";
     }
 
-    public static String getEmptyMonth(){
+    public static String getEmptyMonth() {
         return "";
     }
 
@@ -80,16 +80,15 @@ public class DataHelper {
         return "";
     }
 
-    public static String getPastYear(){
+    public static String getPastYear() {
         return "13";
     }
 
-    public static String getInvalidFormatYear(){
+    public static String getInvalidFormatYear() {
         return "3";
-
     }
 
-    public static String getFutureYear(){
+    public static String getFutureYear() {
         return "90";
     }
 
@@ -97,7 +96,7 @@ public class DataHelper {
         return "двадцать третий";
     }
 
-    public static String getValidOwner(){
+    public static String getValidOwner() {
         return "Ivan Ivanov";
     }
 
@@ -105,39 +104,39 @@ public class DataHelper {
         return "";
     }
 
-    public static String getOnlyNameOwner(){
+    public static String getOnlyNameOwner() {
         return "Ivan";
     }
 
-    public static String getLowercaseLettersOwner(){
+    public static String getLowercaseLettersOwner() {
         return "ivan ivanov";
     }
 
-    public static String getUppercaseLettersOwner(){
+    public static String getUppercaseLettersOwner() {
         return "IVAN IVANOV";
     }
 
-    public static String getRedundantDataOwner(){
+    public static String getRedundantDataOwner() {
         return "Ivan Ivanov Ivanovich";
     }
 
-    public static String getCyrillicDataOwner(){
+    public static String getCyrillicDataOwner() {
         return "Иван Иванов";
     }
 
-    public static String getTwoAlphabetsDataOwner(){
+    public static String getTwoAlphabetsDataOwner() {
         return "Иван Ivanov";
     }
 
-    public static String getOwnerWithDigits(){
+    public static String getOwnerWithDigits() {
         return "12345";
     }
 
-    public static String getOwnerWithSpecialChars(){
+    public static String getOwnerWithSpecialChars() {
         return "!№%?*";
     }
 
-    public static String getValidCode(){
+    public static String getValidCode() {
         return "999";
     }
 
@@ -145,11 +144,11 @@ public class DataHelper {
         return "";
     }
 
-    public static String getInvalidFormatCode(){
+    public static String getInvalidFormatCode() {
         return "11";
     }
 
-    public static String getCodeWithText(){
+    public static String getCodeWithText() {
         return "код";
     }
 }

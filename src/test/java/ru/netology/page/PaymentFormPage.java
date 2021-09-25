@@ -1,6 +1,10 @@
 package ru.netology.page;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.Keys;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -24,4 +28,53 @@ public class PaymentFormPage {
     private SelenideElement cardExpiredMessage = $(byText("Истёк срок действия карты"));
 
 
+    public void fillForm(String cardNumber, String month, String year, String cardOwner, String code) {
+        cardNumberField.sendKeys(cardNumber);
+        monthField.sendKeys(month);
+        yearField.sendKeys(year);
+        cardOwnerField.sendKeys(cardOwner);
+        codeField.sendKeys(code);
+        continueButton.click();
+    }
+
+    public PaymentFormPage clear() {
+        clearFields();
+        return new PaymentFormPage();
+    }
+
+    public void clearFields() {
+        cardNumberField.doubleClick().sendKeys(Keys.BACK_SPACE);
+        monthField.doubleClick().sendKeys(Keys.BACK_SPACE);
+        yearField.doubleClick().sendKeys(Keys.BACK_SPACE);
+        cardOwnerField.doubleClick().sendKeys(Keys.BACK_SPACE);
+        codeField.doubleClick().sendKeys(Keys.BACK_SPACE);
+    }
+
+    public void waitForFailedNotification() {
+        failedNotification.shouldBe(Condition.visible, Duration.ofSeconds(15));
+    }
+
+    public void waitForSuccessedNotification() {
+        successedNotification.shouldBe(Condition.visible, Duration.ofSeconds(15));
+    }
+
+    public void waitForMandatoryFieldMessage() {
+        mandatoryFieldMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
+    }
+
+    public void waitForWrongFormatMessage() {
+        wrongFormatMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
+    }
+
+    public void waitForInvalidCharactersMessage() {
+        invalidCharactersMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
+    }
+
+    public void waitForWrongCardExpirationMessage() {
+        wrongCardExpirationMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
+    }
+
+    public void waitForCardExpiredMessage() {
+        cardExpiredMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
+    }
 }
