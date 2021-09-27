@@ -9,8 +9,8 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class MainPage {
 
-    private SelenideElement heading = $("#root > div > h2");
-    private SelenideElement headingPaymentForm = $("#root > div > h3");
+    private SelenideElement heading = $("[class='heading heading_size_l heading_theme_alfa-on-white']");
+    private SelenideElement headingPaymentForm = $("[class='heading heading_size_m heading_theme_alfa-on-white']");
     private SelenideElement buyByDebitCardButton = $(byText("Купить"));
     private SelenideElement buyByCreditCardButton = $(byText("Купить в кредит"));
 
