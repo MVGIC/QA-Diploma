@@ -2,6 +2,7 @@ package ru.netology.data;
 
 import com.github.javafaker.Faker;
 
+import java.time.LocalDate;
 import java.util.Locale;
 
 public class DataHelper {
@@ -9,7 +10,6 @@ public class DataHelper {
     private static Faker fakerRu = new Faker(new Locale("ru"));
 
     private DataHelper() {
-
     }
 
     public static String getFirstCardNumber() {
@@ -41,7 +41,7 @@ public class DataHelper {
     }
 
     public static String getCardNumberWith1Digit() {
-        return "1";
+        return fakerEn.number().digits(1);
     }
 
     public static String getCardNumberWithTextAndChars() {
@@ -49,7 +49,8 @@ public class DataHelper {
     }
 
     public static String getValidMonth() {
-        return "10";
+        String validMonth = String.valueOf(LocalDate.now().getMonth());
+        return validMonth;
     }
 
     public static String getEmptyMonth() {
@@ -65,7 +66,7 @@ public class DataHelper {
     }
 
     public static String getInvalidFormatMonth() {
-        return "1";
+        return fakerEn.number().digit();
     }
 
     public static String getMonthWithText() {
@@ -73,7 +74,8 @@ public class DataHelper {
     }
 
     public static String getValidYear() {
-        return "23";
+        String validYear = String.valueOf(LocalDate.now().getYear());
+        return validYear;
     }
 
     public static String getEmptyYear() {
@@ -81,15 +83,17 @@ public class DataHelper {
     }
 
     public static String getPastYear() {
-        return "13";
+        String pastYear = String.valueOf(LocalDate.now().minusYears(1));
+        return pastYear;
     }
 
     public static String getInvalidFormatYear() {
-        return "3";
+        return fakerEn.number().digit();
     }
 
     public static String getFutureYear() {
-        return "90";
+        String futureYear = String.valueOf(LocalDate.now().plusYears(1));
+        return futureYear;
     }
 
     public static String getYearWithText() {
@@ -97,7 +101,7 @@ public class DataHelper {
     }
 
     public static String getValidOwner() {
-        return "Ivan Ivanov";
+        return fakerEn.name().fullName();
     }
 
     public static String getEmptyOwner() {
@@ -105,15 +109,15 @@ public class DataHelper {
     }
 
     public static String getOnlyNameOwner() {
-        return "Ivan";
+        return fakerEn.name().firstName();
     }
 
     public static String getLowercaseLettersOwner() {
-        return "ivan ivanov";
+        return fakerEn.name().fullName().toLowerCase(Locale.ROOT);
     }
 
     public static String getUppercaseLettersOwner() {
-        return "IVAN IVANOV";
+        return fakerEn.name().fullName().toUpperCase(Locale.ROOT);
     }
 
     public static String getRedundantDataOwner() {
@@ -121,15 +125,15 @@ public class DataHelper {
     }
 
     public static String getCyrillicDataOwner() {
-        return "Иван Иванов";
+        return fakerRu.name().fullName();
     }
 
     public static String getTwoAlphabetsDataOwner() {
-        return "Иван Ivanov";
+        return fakerRu.name().firstName() + fakerEn.name().lastName();
     }
 
     public static String getOwnerWithDigits() {
-        return "12345";
+        return fakerEn.number().digits(5);
     }
 
     public static String getOwnerWithSpecialChars() {
@@ -137,7 +141,7 @@ public class DataHelper {
     }
 
     public static String getValidCode() {
-        return "999";
+        return fakerEn.number().digits(3);
     }
 
     public static String getEmptyCode() {
@@ -145,7 +149,7 @@ public class DataHelper {
     }
 
     public static String getInvalidFormatCode() {
-        return "11";
+        return fakerEn.number().digits(2);
     }
 
     public static String getCodeWithText() {
