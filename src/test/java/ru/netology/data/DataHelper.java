@@ -49,7 +49,7 @@ public class DataHelper {
     }
 
     public static String getValidMonth() {
-        String validMonth = String.valueOf(LocalDate.now().getMonth());
+        String validMonth = String.valueOf(LocalDate.now().getMonth().getValue());
         return validMonth;
     }
 
@@ -129,7 +129,7 @@ public class DataHelper {
     }
 
     public static String getTwoAlphabetsDataOwner() {
-        return fakerRu.name().firstName() + fakerEn.name().lastName();
+        return fakerRu.name().firstName() + " " + fakerEn.name().lastName();
     }
 
     public static String getOwnerWithDigits() {
