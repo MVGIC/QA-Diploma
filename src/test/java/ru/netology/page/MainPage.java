@@ -18,13 +18,15 @@ public class MainPage {
         heading.shouldBe(visible);
     }
 
-    public void payWithDebitCard() {
+    public PaymentFormPageDebit payWithDebitCard() {
         buyByDebitCardButton.click();
         headingPaymentForm.shouldHave(exactText("Оплата по карте"));
+        return new PaymentFormPageDebit();
     }
 
-    public void payWithCreditCard() {
+    public PaymentFormPageCredit payWithCreditCard() {
         buyByCreditCardButton.click();
         headingPaymentForm.shouldHave(exactText("Кредит по данным карты"));
+        return new PaymentFormPageCredit();
     }
 }
