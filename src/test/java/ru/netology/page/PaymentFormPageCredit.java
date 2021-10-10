@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class PaymentFormPageDebit {
+public class PaymentFormPageCredit {
 
     private SelenideElement cardNumberField = $("[placeholder='0000 0000 0000 0000']");
     private SelenideElement monthField = $("[placeholder='08']");
@@ -38,9 +38,9 @@ public class PaymentFormPageDebit {
         continueButton.click();
     }
 
-    public PaymentFormPageDebit clear() {
+    public PaymentFormPageCredit clear() {
         clearFields();
-        return new PaymentFormPageDebit();
+        return new PaymentFormPageCredit();
     }
 
     public void clearFields() {
