@@ -38,21 +38,25 @@ Github - склонировать проект себе на ПК для пос�
 1) Запускаем контейнеры из файла **docker-compose.yml** командой в терминале: _docker-compose up_
    и проверяем, что контейнеры запустились командой: _docker-compose ps_
 
-2) Запускаем SUT командой в терминале:
+Ожидаемый статус контейнеров - **UP**
+
+![](Screenshots/Containers.png)
+
+3) Запускаем SUT командой в терминале:
 
 - для MySQL:
 
 ```
-java -Dspring.datasource.url=jdbc:mysql://localhost:3306/app -jar artifacts/aqa-shop.jar
+java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar artifacts/aqa-shop.jar
 ```
 
 - для PostgreSQL:
 
 ```
-java -Dspring.datasource.url=jdbc:postgresql://localhost:5432/app -jar artifacts/aqa-shop.jar
+java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar artifacts/aqa-shop.jar
 ```
 
-3)Запускаем авто-тесты командой в терминале:
+3) Запускаем авто-тесты командой в терминале:
 
 - для MySQL:
 
@@ -64,6 +68,12 @@ gradlew clean test -Ddatasource.url=jdbc:mysql://localhost:3306/app
 
 ```
 gradlew clean test -Ddatasource.url=jdbc:postgresql://localhost:5432/app
+```
+
+Дождаться сообщения в терминале, которое будет означать, что приложение успешно запущено:
+
+```
+date time INFO 20036 --- [           main] ru.netology.shop.ShopApplication         : Started ShopApplication in 6.475 seconds (JVM running for 7.201)
 ```
 
 Сервис будет доступен в браузере по адресу: _http://localhost:8080/_
