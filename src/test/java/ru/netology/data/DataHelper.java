@@ -3,6 +3,7 @@ package ru.netology.data;
 import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class DataHelper {
@@ -49,7 +50,7 @@ public class DataHelper {
     }
 
     public static String getValidMonth() {
-        String validMonth = String.valueOf(LocalDate.now().getMonth().getValue());
+        String validMonth = LocalDate.now().format(DateTimeFormatter.ofPattern("MM"));
         return validMonth;
     }
 
@@ -74,7 +75,7 @@ public class DataHelper {
     }
 
     public static String getValidYear() {
-        String validYear = String.valueOf(LocalDate.now().getYear());
+        String validYear = LocalDate.now().format(DateTimeFormatter.ofPattern("yy"));
         return validYear;
     }
 
@@ -83,7 +84,7 @@ public class DataHelper {
     }
 
     public static String getPastYear() {
-        String pastYear = String.valueOf(LocalDate.now().minusYears(1));
+        String pastYear = LocalDate.now().minusYears(1).format(DateTimeFormatter.ofPattern("yy"));
         return pastYear;
     }
 
@@ -92,7 +93,7 @@ public class DataHelper {
     }
 
     public static String getFutureYear() {
-        String futureYear = String.valueOf(LocalDate.now().plusYears(10));
+        String futureYear = LocalDate.now().plusYears(1).format(DateTimeFormatter.ofPattern("yy"));
         return futureYear;
     }
 
