@@ -93,7 +93,7 @@ public class DataHelper {
     }
 
     public static String getFutureYear() {
-        String futureYear = LocalDate.now().plusYears(1).format(DateTimeFormatter.ofPattern("yy"));
+        String futureYear = LocalDate.now().plusYears(10).format(DateTimeFormatter.ofPattern("yy"));
         return futureYear;
     }
 
@@ -102,7 +102,7 @@ public class DataHelper {
     }
 
     public static String getValidOwner() {
-        return fakerEn.name().fullName();
+        return fakerEn.name().firstName() + " " + fakerEn.name().lastName();
     }
 
     public static String getEmptyOwner() {
@@ -114,11 +114,11 @@ public class DataHelper {
     }
 
     public static String getLowercaseLettersOwner() {
-        return fakerEn.name().fullName().toLowerCase(Locale.ROOT);
+        return fakerEn.name().firstName().toLowerCase(Locale.ROOT) + " " + fakerEn.name().lastName().toLowerCase(Locale.ROOT);
     }
 
     public static String getUppercaseLettersOwner() {
-        return fakerEn.name().fullName().toUpperCase(Locale.ROOT);
+        return fakerEn.name().firstName().toUpperCase(Locale.ROOT) + " " + fakerEn.name().lastName().toUpperCase(Locale.ROOT);
     }
 
     public static String getRedundantDataOwner() {

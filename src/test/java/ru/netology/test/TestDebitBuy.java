@@ -47,7 +47,7 @@ public class TestDebitBuy {
     }
 
     @Test
-    void shouldDenyPurchaseWithEmptyFieldCardNumber() {
+    void shouldDenyPurchaseWithEmptyCardNumberField() {
         paymentFormPageDebit = mainPage.payWithDebitCard()
                 .clear();
         val cardNumber = DataHelper.getEmptyCardNumber();
@@ -132,7 +132,7 @@ public class TestDebitBuy {
     }
 
     @Test
-    void shouldDenyPurchaseWithEmptyFieldMonth() {
+    void shouldDenyPurchaseWithEmptyMonthField() {
         paymentFormPageDebit = mainPage.payWithDebitCard()
                 .clear();
         val cardNumber = DataHelper.getFirstCardNumber();
