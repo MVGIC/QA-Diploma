@@ -3,15 +3,14 @@ package ru.netology.test;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import lombok.val;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import ru.netology.data.DataHelper;
 import ru.netology.page.MainPage;
 import ru.netology.page.PaymentFormPageCredit;
+import ru.netology.sql.SqlRequest;
 
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestCreditBuy {
     private MainPage mainPage;
@@ -32,6 +31,11 @@ public class TestCreditBuy {
         mainPage = open("http://localhost:8080/", MainPage.class);
     }
 
+    @AfterEach
+    void cleanDB() {
+        SqlRequest.clearDB();
+    }
+
 
     @Test
     void shouldAllowPurchaseWithApprovedCard() {
@@ -44,7 +48,13 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForSuccessedNotification();
-
+        val expected = DataHelper.getFirstCardStatus();
+        if (expected == DataHelper.getSecondCardStatus()) {
+            paymentFormPageCredit.waitForFailedNotification();
+        } else {
+            val actual = SqlRequest.getCreditPaymentStatus();
+            assertEquals(expected, actual);
+        }
     }
 
     @Test
@@ -84,7 +94,13 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForFailedNotification();
-
+        val expected = DataHelper.getSecondCardStatus();
+        if (expected == DataHelper.getSecondCardStatus()) {
+            paymentFormPageCredit.waitForFailedNotification();
+        } else {
+            val actual = SqlRequest.getCreditPaymentStatus();
+            assertEquals(expected, actual);
+        }
     }
 
     @Test
