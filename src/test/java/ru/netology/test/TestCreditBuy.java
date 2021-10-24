@@ -1,6 +1,10 @@
 package ru.netology.test;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import lombok.val;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.data.DataHelper;
@@ -13,10 +17,21 @@ public class TestCreditBuy {
     private MainPage mainPage;
     private PaymentFormPageCredit paymentFormPageCredit;
 
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
+
     @BeforeEach
     public void setUp() {
         mainPage = open("http://localhost:8080/", MainPage.class);
     }
+
 
     @Test
     void shouldAllowPurchaseWithApprovedCard() {
@@ -43,7 +58,6 @@ public class TestCreditBuy {
         val code = DataHelper.getEmptyCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForMandatoryFieldMessage();
-
     }
 
     @Test
@@ -58,7 +72,6 @@ public class TestCreditBuy {
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForMandatoryFieldMessage();
     }
-
 
     @Test
     void shouldDenyPurchaseWithDeclinedCard() {
@@ -85,7 +98,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForFailedNotification();
-
     }
 
     @Test
@@ -99,7 +111,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -113,7 +124,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -127,7 +137,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForInvalidCharactersMessage();
-
     }
 
     @Test
@@ -141,7 +150,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForMandatoryFieldMessage();
-
     }
 
     @Test
@@ -155,7 +163,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForWrongCardExpirationMessage();
-
     }
 
     @Test
@@ -169,7 +176,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForWrongCardExpirationMessage();
-
     }
 
     @Test
@@ -183,7 +189,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -197,7 +202,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForInvalidCharactersMessage();
-
     }
 
     @Test
@@ -211,7 +215,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForMandatoryFieldMessage();
-
     }
 
     @Test
@@ -225,7 +228,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForCardExpiredMessage();
-
     }
 
     @Test
@@ -239,7 +241,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -253,7 +254,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForWrongCardExpirationMessage();
-
     }
 
     @Test
@@ -267,7 +267,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForInvalidCharactersMessage();
-
     }
 
     @Test
@@ -281,7 +280,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForMandatoryFieldMessage();
-
     }
 
     @Test
@@ -295,7 +293,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -309,7 +306,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -323,7 +319,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -337,7 +332,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -351,7 +345,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -365,7 +358,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForInvalidCharactersMessage();
-
     }
 
     @Test
@@ -379,7 +371,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForInvalidCharactersMessage();
-
     }
 
     @Test
@@ -393,7 +384,6 @@ public class TestCreditBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForInvalidCharactersMessage();
-
     }
 
     @Test
@@ -407,7 +397,6 @@ public class TestCreditBuy {
         val code = DataHelper.getEmptyCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForMandatoryFieldMessage();
-
     }
 
     @Test
@@ -421,7 +410,6 @@ public class TestCreditBuy {
         val code = DataHelper.getInvalidFormatCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -435,6 +423,5 @@ public class TestCreditBuy {
         val code = DataHelper.getCodeWithText();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForInvalidCharactersMessage();
-
     }
 }

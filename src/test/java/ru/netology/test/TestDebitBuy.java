@@ -1,6 +1,10 @@
 package ru.netology.test;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import lombok.val;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.data.DataHelper;
@@ -13,10 +17,21 @@ public class TestDebitBuy {
     private MainPage mainPage;
     private PaymentFormPageDebit paymentFormPageDebit;
 
-    @BeforeEach
-    public void setUp(){
-        mainPage = open("http://localhost:8080/",MainPage.class);
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
     }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
+
+    @BeforeEach
+    public void setUp() {
+        mainPage = open("http://localhost:8080/", MainPage.class);
+    }
+
 
     @Test
     void shouldAllowPurchaseWithApprovedCard() {
@@ -43,7 +58,6 @@ public class TestDebitBuy {
         val code = DataHelper.getEmptyCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForMandatoryFieldMessage();
-
     }
 
     @Test
@@ -57,8 +71,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForMandatoryFieldMessage();
-
-
     }
 
     @Test
@@ -86,7 +98,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForFailedNotification();
-
     }
 
     @Test
@@ -100,7 +111,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -114,7 +124,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -128,7 +137,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForInvalidCharactersMessage();
-
     }
 
     @Test
@@ -142,7 +150,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForMandatoryFieldMessage();
-
     }
 
     @Test
@@ -156,7 +163,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForWrongCardExpirationMessage();
-
     }
 
     @Test
@@ -170,7 +176,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForWrongCardExpirationMessage();
-
     }
 
     @Test
@@ -184,7 +189,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -198,7 +202,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForInvalidCharactersMessage();
-
     }
 
     @Test
@@ -212,7 +215,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForMandatoryFieldMessage();
-
     }
 
     @Test
@@ -226,7 +228,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForCardExpiredMessage();
-
     }
 
     @Test
@@ -240,7 +241,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -254,7 +254,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForWrongCardExpirationMessage();
-
     }
 
     @Test
@@ -268,7 +267,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForInvalidCharactersMessage();
-
     }
 
     @Test
@@ -282,7 +280,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForMandatoryFieldMessage();
-
     }
 
     @Test
@@ -296,7 +293,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -310,7 +306,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -324,7 +319,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -338,7 +332,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -352,7 +345,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -366,7 +358,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForInvalidCharactersMessage();
-
     }
 
     @Test
@@ -380,7 +371,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForInvalidCharactersMessage();
-
     }
 
     @Test
@@ -394,7 +384,6 @@ public class TestDebitBuy {
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForInvalidCharactersMessage();
-
     }
 
     @Test
@@ -408,7 +397,6 @@ public class TestDebitBuy {
         val code = DataHelper.getEmptyCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForMandatoryFieldMessage();
-
     }
 
     @Test
@@ -422,7 +410,6 @@ public class TestDebitBuy {
         val code = DataHelper.getInvalidFormatCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForWrongFormatMessage();
-
     }
 
     @Test
@@ -436,6 +423,5 @@ public class TestDebitBuy {
         val code = DataHelper.getCodeWithText();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForInvalidCharactersMessage();
-
     }
 }
