@@ -49,12 +49,8 @@ public class TestCreditBuy {
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForSuccessedNotification();
         val expected = DataHelper.getFirstCardStatus();
-        if (expected == DataHelper.getSecondCardStatus()) {
-            paymentFormPageCredit.waitForFailedNotification();
-        } else {
-            val actual = SqlRequest.getCreditPaymentStatus();
-            assertEquals(expected, actual);
-        }
+        val actual = SqlRequest.getCreditPaymentStatus();
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -95,12 +91,8 @@ public class TestCreditBuy {
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageCredit.waitForFailedNotification();
         val expected = DataHelper.getSecondCardStatus();
-        if (expected == DataHelper.getSecondCardStatus()) {
-            paymentFormPageCredit.waitForFailedNotification();
-        } else {
-            val actual = SqlRequest.getCreditPaymentStatus();
-            assertEquals(expected, actual);
-        }
+        val actual = SqlRequest.getCreditPaymentStatus();
+        assertEquals(expected, actual);
     }
 
     @Test

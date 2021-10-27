@@ -49,12 +49,8 @@ public class TestDebitBuy {
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForSuccessedNotification();
         val expected = DataHelper.getFirstCardStatus();
-        if (expected == DataHelper.getSecondCardStatus()) {
-            paymentFormPageDebit.waitForFailedNotification();
-        } else {
-            val actual = SqlRequest.getDebitPaymentStatus();
-            assertEquals(expected, actual);
-        }
+        val actual = SqlRequest.getDebitPaymentStatus();
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -95,12 +91,8 @@ public class TestDebitBuy {
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForFailedNotification();
         val expected = DataHelper.getSecondCardStatus();
-        if (expected == DataHelper.getSecondCardStatus()) {
-            paymentFormPageDebit.waitForFailedNotification();
-        } else {
-            val actual = SqlRequest.getDebitPaymentStatus();
-            assertEquals(expected, actual);
-        }
+        val actual = SqlRequest.getDebitPaymentStatus();
+        assertEquals(expected, actual);
     }
 
     @Test
