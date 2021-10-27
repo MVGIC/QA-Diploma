@@ -52,30 +52,30 @@ public class PaymentFormPageDebit {
     }
 
     public void waitForFailedNotification() {
-        failedNotification.shouldBe(Condition.visible, Duration.ofSeconds(15));
+        failedNotification.shouldBe(Condition.visible, Duration.ofSeconds(7));
     }
 
     public void waitForSuccessedNotification() {
-        successedNotification.shouldBe(Condition.visible, Duration.ofSeconds(15));
+        successedNotification.shouldBe(Condition.visible, Duration.ofSeconds(7));
     }
 
     public void waitForMandatoryFieldMessage() {
-        mandatoryFieldMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
+        mandatoryFieldMessage.shouldBe(Condition.visible, Duration.ofSeconds(7));
     }
 
     public void waitForWrongFormatMessage() {
-        wrongFormatMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
+        wrongFormatMessage.shouldBe(Condition.visible, Duration.ofSeconds(7));
     }
 
     public void waitForInvalidCharactersMessage() {
-        invalidCharactersMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
+        invalidCharactersMessage.shouldBe(Condition.visible, Duration.ofSeconds(7));
     }
 
     public void waitForWrongCardExpirationMessage() {
-        wrongCardExpirationMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
+        wrongCardExpirationMessage.shouldBe(Condition.visible, Duration.ofSeconds(7));
     }
 
     public void waitForCardExpiredMessage() {
-        cardExpiredMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
+        cardExpiredMessage.shouldBe(Condition.visible, Duration.ofSeconds(7));
     }
 }
