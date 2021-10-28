@@ -16,7 +16,7 @@ allure {
     version = '2.13.3'
 
     useJUnit5 {
-        version '2.13.3'
+        version = '2.13.3'
     }
 }
 

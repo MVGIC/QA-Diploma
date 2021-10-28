@@ -19,7 +19,6 @@ public class SqlRequest {
         return DriverManager.getConnection(DB_URL, "app", "pass");
     }
 
-
     @SneakyThrows
     public static void clearDB() {
         QueryRunner runner = new QueryRunner();
