@@ -45,8 +45,8 @@
 5) [Успешная покупка тура по невалидной карте](https://github.com/MVGIC/QA-Diploma/issues/5)
 6) [Кнопки покупки отличаются по цвету](https://github.com/MVGIC/QA-Diploma/issues/6)
 7) [Сообщение об ошибке у корректно заполненного поля](https://github.com/MVGIC/QA-Diploma/issues/7)
-8) 
-
+8) [Форма отправляется c невалидным значением в поле "CVC/CVV"](https://github.com/MVGIC/QA-Diploma/issues/8)
+9) [Кнопка "Продолжить" активна при незаполненных данных](https://github.com/MVGIC/QA-Diploma/issues/9)
+10) [Некорректное название вкладки сервиса в браузере](https://github.com/MVGIC/QA-Diploma/issues/10)
 
 Особое внимание нужно уделить [второму](https://github.com/MVGIC/QA-Diploma/issues/2) баг-репорту, так как большая часть тестов падает из-за ошибки, описанной в этом репорте.
-
