@@ -105,4 +105,4 @@ date time INFO 20036 --- [           main] ru.netology.shop.ShopApplication     
 
 - [План автоматизации тестирования](https://github.com/MVGIC/QA-Diploma/blob/master/Documentation/Plan.md)
 - [Отчёт по итогам автоматизированного тестирования](https://github.com/MVGIC/QA-Diploma/blob/master/Documentation/Report.md)
-- [Отчёт по итогам автоматизации]()
+- [Отчёт по итогам автоматизации](https://github.com/MVGIC/QA-Diploma/blob/master/Documentation/Summary.md)
